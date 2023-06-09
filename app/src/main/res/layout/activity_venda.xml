@@ -4,6 +4,411 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context=".VendaActivity">
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:padding="4px"
+        android:text="Nova Venda"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <AutoCompleteTextView
+        android:id="@+id/txtNomeComprador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:hint="Digite o nome do Cliente"
+        android:maxLength="60"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/gridLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.285" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="81dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:gravity="left"
+        android:text="Nome: "
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView28" />
+
+    <ScrollView
+        android:id="@+id/scrollViewListaCompras"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="8dp"
+
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtSaldoCliente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="493dp"
+                android:layout_height="wrap_content"
+                android:text="LISTA DE COMPRAS:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="(Deslize para ver mais)"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="12dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tabHeaderQTD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#B4B4B4"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:padding="4dp"
+                    android:text="QTD"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                <TextView
+                    android:id="@+id/txtListaQTD"
+                    android:layout_width="47dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tabHeaderQTD"
+                    android:layout_alignStart="@+id/tabHeaderQTD"
+                    android:layout_alignLeft="@+id/tabHeaderQTD"
+                    android:layout_alignEnd="@+id/tabHeaderQTD"
+                    android:layout_alignRight="@+id/tabHeaderQTD"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:background="#34000000"
+                    android:gravity="center_horizontal"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                <TextView
+                    android:id="@+id/tabHeaderNome"
+                    android:layout_width="242dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_toStartOf="@+id/tabHeaderPrecoQtd"
+                    android:layout_toLeftOf="@+id/tabHeaderPrecoQtd"
+                    android:layout_toEndOf="@+id/tabHeaderQTD"
+                    android:layout_toRightOf="@+id/tabHeaderQTD"
+                    android:background="#B4B4B4"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:padding="4dp"
+                    android:text="Nome"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                <TextView
+                    android:id="@+id/txtListaNome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tabHeaderNome"
+                    android:layout_alignStart="@+id/tabHeaderNome"
+                    android:layout_alignLeft="@+id/tabHeaderNome"
+                    android:layout_alignEnd="@+id/tabHeaderNome"
+                    android:layout_alignRight="@+id/tabHeaderNome"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:background="#34000000"
+                    android:gravity="center_horizontal"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                <TextView
+                    android:id="@+id/tabHeaderPrecoQtd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginRight="3dp"
+                    android:background="#B4B4B4"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:padding="4dp"
+                    android:text="Preço x Qtd"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                <TextView
+                    android:id="@+id/txtListaPrecoQTD"
+                    android:layout_width="113dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tabHeaderPrecoQtd"
+                    android:layout_alignStart="@+id/tabHeaderPrecoQtd"
+                    android:layout_alignLeft="@+id/tabHeaderPrecoQtd"
+                    android:layout_alignEnd="@+id/tabHeaderPrecoQtd"
+                    android:layout_alignRight="@+id/tabHeaderPrecoQtd"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:background="#34000000"
+                    android:gravity="center_horizontal"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.GridLayout
+                android:id="@+id/gradeCompras"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.GridLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <android.support.v7.widget.GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="344dp"
+        android:layout_height="222dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/scrollViewListaCompras"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNomeComprador">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right|center_vertical"
+            android:text="Nome do produto: "
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_column="0"
+            app:layout_gravity="right|center_vertical"
+            app:layout_row="0" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="Quantidade: "
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_column="0"
+            app:layout_gravity="left"
+            app:layout_row="2" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_column="1"
+            app:layout_row="1" />
+
+
+        <AutoCompleteTextView
+            android:id="@+id/entNomeProduto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Digite o nome do produto"
+            android:maxLength="25"
+            app:layout_column="1"
+            app:layout_row="0" />
+
+
+        <TextView
+            android:id="@+id/txtPrecoProduto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="R$ 0,00"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_column="1"
+            app:layout_row="5" />
+
+        <Button
+            android:id="@+id/aumentarQTD"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+"
+            app:layout_column="1"
+            app:layout_row="2" />
+
+        <EditText
+            android:id="@+id/entQtdProduto"
+            android:layout_width="79dp"
+            android:layout_height="42dp"
+            android:ems="10"
+
+            android:inputType="number"
+            android:maxLength="2"
+            android:text="1"
+            app:layout_column="1"
+            app:layout_row="3" />
+
+        <Button
+            android:id="@+id/diminuirQTD"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="-"
+            app:layout_column="1"
+            app:layout_row="4" />
+
+    </android.support.v7.widget.GridLayout>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+
+        android:src="@drawable/btn_adicionar"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginEnd="8dp"
+        android:text="Deixe em branco para registrar uma compra anônima"
+        app:layout_constraintEnd_toEndOf="@+id/txtNomeComprador"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/txtNomeComprador" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+
+        android:src="@drawable/btn_realizar_venda"
+        app:layout_constraintBottom_toBottomOf="@+id/imgVendaCredito"
+        app:layout_constraintStart_toEndOf="@+id/imgVendaCredito"
+        app:layout_constraintTop_toTopOf="@+id/imgVendaCredito"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="24dp"
+
+        android:src="@drawable/btn_voltar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtSaldoCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#6FFFC107"
+        android:gravity="right|center_vertical"
+        android:padding="10px"
+        android:text="CLIENTE: R$0,00"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="@+id/txtTotalCompra"
+        app:layout_constraintStart_toStartOf="@+id/scrollViewListaCompras"
+        app:layout_constraintTop_toTopOf="@+id/txtTotalCompra"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtTotalCompra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="#461AFF00"
+        android:gravity="right|center_vertical"
+        android:padding="10px"
+        android:text="TOTAL: R$ 0,00"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgVendaCredito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+       />
+
+    <Button
+        android:id="@+id/btnZerarVenda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#FF4747"
+
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="zerar tudo"
+        app:layout_constraintBottom_toBottomOf="@+id/txtSaldoCliente"
+        app:layout_constraintEnd_toStartOf="@+id/txtTotalCompra"
+        app:layout_constraintStart_toEndOf="@+id/txtSaldoCliente"
+        app:layout_constraintTop_toTopOf="@+id/txtSaldoCliente" />
 
 </android.support.constraint.ConstraintLayout>

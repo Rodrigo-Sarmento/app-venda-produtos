@@ -38,4 +38,20 @@
         app:layout_constraintTop_toBottomOf="@+id/btCliente"
         app:layout_constraintVertical_bias="0.205" />
 
+    <Button
+        android:id="@+id/btVenda"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="6dp"
+        android:background="@color/black"
+        android:text="Vendas"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.761" />
+
 </android.support.constraint.ConstraintLayout>
