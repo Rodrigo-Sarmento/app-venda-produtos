@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LayoutAdicionarProduto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".ProdutoActivity">
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:padding="4px"
+        android:text="Adicionar Produto"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:layout_constraintEnd_toStartOf="@+id/scrollView5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewVoltarProduto"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="24dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/btn_voltar"
+         />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="124dp"
+        android:text="Categoria: "
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="28dp"
+        android:text="Nome do produto: "
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="28dp"
+        android:text="Preço:  "
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <Spinner
+        android:id="@+id/spinnerCategoriaV"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+
+
+        app:layout_constraintBottom_toBottomOf="@+id/textView12"
+        app:layout_constraintEnd_toStartOf="@+id/scrollView5"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintTop_toTopOf="@+id/textView12"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <EditText
+        android:id="@+id/entNomeProduto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:maxLength="25"
+        android:hint="Ex: Toddynho"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/textView14"
+        app:layout_constraintEnd_toStartOf="@+id/scrollView5"
+        app:layout_constraintStart_toEndOf="@+id/textView14"
+        app:layout_constraintTop_toTopOf="@+id/textView14"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/entPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:maxLength="6"
+        android:hint="Ex: 2.49"
+        android:inputType="numberDecimal"
+        android:text="1.00"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRemovePrice"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddPrice"
+        app:layout_constraintStart_toEndOf="@+id/btnRemovePrice"
+        app:layout_constraintTop_toTopOf="@+id/btnRemovePrice"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnAddPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+
+        android:text="+R$ 1,00"
+        app:layout_constraintBottom_toBottomOf="@+id/entPrice"
+        app:layout_constraintEnd_toStartOf="@+id/scrollView5"
+        app:layout_constraintTop_toTopOf="@+id/entPrice"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btnRemovePrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+
+        android:text="-R$ 0,50"
+        app:layout_constraintBottom_toBottomOf="@+id/textView16"
+        app:layout_constraintStart_toEndOf="@+id/textView16"
+        app:layout_constraintTop_toTopOf="@+id/textView16"
+        app:layout_constraintVertical_bias="0.583" />
+
+    <ImageView
+        android:id="@+id/imageViewAddProduto"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewVoltarProduto"
+        app:layout_constraintStart_toEndOf="@+id/imageViewVoltarProduto"
+        app:layout_constraintTop_toTopOf="@+id/imageViewVoltarProduto"
+        app:srcCompat="@drawable/btn_adicionar"
+       />
+
+    <ScrollView
+        android:id="@+id/scrollView5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="24dp"
+
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView27"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Produtos já cadastrados: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="(Deslize para ver todos)"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="12dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginRight="3dp"
+                    android:background="#B4B4B4"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="Preço unitário"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    tools:layout_conversion_absoluteHeight="24dp"
+                    tools:layout_conversion_absoluteWidth="157dp"
+                    tools:layout_editor_absoluteX="641dp"
+                    tools:layout_editor_absoluteY="101dp" />
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_toStartOf="@+id/textView26"
+                    android:layout_toLeftOf="@+id/textView26"
+                    android:background="#B4B4B4"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="Nome do produto"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    tools:layout_conversion_absoluteHeight="24dp"
+                    tools:layout_conversion_absoluteWidth="206dp"
+                    tools:layout_editor_absoluteX="435dp"
+                    tools:layout_editor_absoluteY="101dp" />
+
+
+            </RelativeLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tabelaProdutos">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
