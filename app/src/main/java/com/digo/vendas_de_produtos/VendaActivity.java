@@ -72,7 +72,7 @@ public class VendaActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String input = s.toString().trim();
 
-                // Faça a busca no banco de dados apenas se o texto digitado for maior que 0
+                // Faz a busca no banco de dados apenas se o texto digitado for maior que 0
                 if (input.length() > 0) {
                     List<Cliente> clientes = db.searchClientes(input);
 
@@ -82,13 +82,10 @@ public class VendaActivity extends AppCompatActivity {
                         txtSaldoCliente.setText("CLIENTE: R$"+cliente.getCredito());
                     }
 
-                    // Limpe o adaptador antes de adicionar as novas sugestões
                     adapter.clear();
 
-                    // Adicione as sugestões ao adaptador
                     adapter.addAll(nomesClientes);
 
-                    // Notifique o adaptador de que os dados foram atualizados
                     adapter.notifyDataSetChanged();
                 }
             }
@@ -109,7 +106,7 @@ public class VendaActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String input = s.toString().trim();
 
-                // Faça a busca no banco de dados apenas se o texto digitado for maior que 0
+                // Faz a busca no banco de dados apenas se o texto digitado for maior que 0
                 if (input.length() > 0) {
                     List<Produto> produtos = db.searchProdutos(input);
 
@@ -119,13 +116,10 @@ public class VendaActivity extends AppCompatActivity {
                         txtPrecoProduto.setText("R$: "+produto.getPreco());
                     }
 
-                    // Limpe o adaptador antes de adicionar as novas sugestões
                     adapter.clear();
 
-                    // Adicione as sugestões ao adaptador
                     adapter.addAll(nomesProdutos);
 
-                    // Notifique o adaptador de que os dados foram atualizados
                     adapter.notifyDataSetChanged();
                 }
             }
@@ -198,7 +192,6 @@ public class VendaActivity extends AppCompatActivity {
                     return;
                 }
 
-                // Procura o produto no banco de dados pelo nome
                 Produto produto = db.getProdutoByNome(nome);
 
                 // Verifica se o produto foi encontrado
@@ -227,9 +220,7 @@ public class VendaActivity extends AppCompatActivity {
                 String qtProduto = qtdProduto.getText().toString();
                 String novoQtProdutos = qtProduto + "\n";
                 txtListaQTD.append(novoQtProdutos);
-
-                // Use o nome e o preço do produto conforme necessário
-                // Exemplo: exiba-os em um Toast
+                
                 Toast.makeText(getApplicationContext(), "Produto adicionado com sucesso! Nome: " + nomeProduto + ", Preço: " + precoProduto,
                         Toast.LENGTH_LONG).show();
             }

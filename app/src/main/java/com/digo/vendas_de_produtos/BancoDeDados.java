@@ -59,7 +59,6 @@ public class BancoDeDados extends SQLiteOpenHelper {
     public List<Produto> getAllProdutos() {
         List<Produto> produtos = new ArrayList<>();
 
-        // Conexão com o banco de dados e consulta para obter todos os produtos
         String selectQuery = "SELECT * FROM TbProduto;";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -76,7 +75,6 @@ public class BancoDeDados extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
 
-        // Fechar o cursor e a conexão com o banco de dados
         cursor.close();
         db.close();
 
@@ -87,7 +85,6 @@ public class BancoDeDados extends SQLiteOpenHelper {
     public List<Produto> searchProdutos(String input) {
         List<Produto> produtos = new ArrayList<>();
 
-        // Conexão com o banco de dados e consulta para obter os produtos com nomes que contenham o texto de entrada
         String selectQuery = "SELECT * FROM TbProduto WHERE nomeProduto LIKE '%" + input + "%';";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -104,7 +101,6 @@ public class BancoDeDados extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
 
-        // Fechar o cursor e a conexão com o banco de dados
         cursor.close();
         db.close();
 
@@ -115,7 +111,6 @@ public class BancoDeDados extends SQLiteOpenHelper {
     public List<Cliente> searchClientes(String input) {
         List<Cliente> clientes = new ArrayList<>();
 
-        // Conexão com o banco de dados e consulta para obter os clientes com nomes que contenham o texto de entrada
         String selectQuery = "SELECT * FROM TbCliente WHERE nomeCliente LIKE '%" + input + "%';";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -131,7 +126,6 @@ public class BancoDeDados extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
 
-        // Fechar o cursor e a conexão com o banco de dados
         cursor.close();
         db.close();
 
@@ -142,14 +136,12 @@ public class BancoDeDados extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Produto produto = new Produto();
 
-        // Query para selecionar o produto pelo nome
         String selectQuery = "SELECT * FROM TbProduto WHERE nomeProduto = '" + nome + "'";
 
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         // Verifica se um produto foi encontrado
         if (cursor.moveToFirst()) {
-            // Preenche os dados do produto a partir do cursor
             @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("_idProduto"));
             @SuppressLint("Range") String nomeProduto = cursor.getString(cursor.getColumnIndex("nomeProduto"));
             @SuppressLint("Range") double precoProduto = cursor.getDouble(cursor.getColumnIndex("preco"));
