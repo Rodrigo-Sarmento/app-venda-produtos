@@ -56,15 +56,21 @@ public class ClienteActivity extends AppCompatActivity {
     }
 
     public void CadCliente(View view){
-        Cliente cliente = new Cliente();
-        cliente.setCredito(Double.parseDouble(etCredito.getText().toString()));
-        cliente.setNomeCliente(etNomeCliente.getText().toString());
-        cliente.setNomeResponsavel(etNomeResponsavel.getText().toString());
-        cliente.setTelefoneResponsavel(etTelefoneResponsavel.getText().toString());
+        if(etNomeCliente.getText().toString().equals("") || etNomeResponsavel.getText().toString().equals("") || etCredito.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(),"Preencha todos os campos com *",
+                    Toast.LENGTH_LONG).show();
+        }else{
+            Cliente cliente = new Cliente();
+            cliente.setCredito(Double.parseDouble(etCredito.getText().toString()));
+            cliente.setNomeCliente(etNomeCliente.getText().toString());
+            cliente.setNomeResponsavel(etNomeResponsavel.getText().toString());
+            cliente.setTelefoneResponsavel(etTelefoneResponsavel.getText().toString());
 
-        db.insertCliente(cliente);
-        Toast.makeText(getApplicationContext(),"Cadastrado com Sucesso o cliente: "+cliente.nomeCliente ,
-                Toast.LENGTH_LONG).show();
+            db.insertCliente(cliente);
+            Toast.makeText(getApplicationContext(),"Cadastrado com Sucesso o cliente: "+cliente.nomeCliente ,
+                    Toast.LENGTH_LONG).show();
+        }
+
     }
 
 }

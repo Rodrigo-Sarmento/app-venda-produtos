@@ -99,14 +99,19 @@ public class ProdutoActivity extends AppCompatActivity {
         });
     }
     public void CadProduto(View view){
-        Produto produto = new Produto();
-        produto.setNomeProduto(etNomeProduto.getText().toString());
-        produto.setPreco(Double.parseDouble(etPreco.getText().toString()));
+        if(etNomeProduto.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(),"Informe o nome do produto!",
+                    Toast.LENGTH_LONG).show();
+        }else{
+            Produto produto = new Produto();
+            produto.setNomeProduto(etNomeProduto.getText().toString());
+            produto.setPreco(Double.parseDouble(etPreco.getText().toString()));
 
-        db.insertProduto(produto);
-        carregarProdutos();
-        Toast.makeText(getApplicationContext(),"Cadastrado com Sucesso o Produto: "+produto.nomeProduto ,
-                Toast.LENGTH_LONG).show();
+            db.insertProduto(produto);
+            carregarProdutos();
+            Toast.makeText(getApplicationContext(),"Cadastrado com Sucesso o Produto: "+produto.nomeProduto ,
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
     public void carregarProdutos() {
