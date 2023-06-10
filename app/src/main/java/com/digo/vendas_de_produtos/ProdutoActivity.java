@@ -21,6 +21,8 @@ public class ProdutoActivity extends AppCompatActivity {
     private TextView etNomeProduto;
     private Spinner categoria;
     private TextView etPreco;
+    private TextView txtNomeProduto;
+    private TextView txtPrecoUnidade;
 
     private ImageView addProduto;
     private ImageView voltarProduto;
@@ -47,6 +49,9 @@ public class ProdutoActivity extends AppCompatActivity {
 
         addPreco = findViewById(R.id.btnAddPrice);
         rmvPreco = findViewById(R.id.btnRemovePrice);
+
+        txtNomeProduto = findViewById(R.id.txtNomeProduto);
+        txtPrecoUnidade = findViewById(R.id.txtPrecoUnidade);
 
         tabelaProdutos = findViewById(R.id.tabelaProdutos);
         carregarProdutos();
@@ -105,49 +110,17 @@ public class ProdutoActivity extends AppCompatActivity {
     }
 
     public void carregarProdutos() {
-        tabelaProdutos.removeAllViews();//limpa
         List<Produto> produtos = db.getAllProdutos();
 
+        StringBuilder nomeProdutos = new StringBuilder();
+        StringBuilder precoUnidades = new StringBuilder();
+
         for (Produto produto : produtos) {
-            // Criar uma nova linha para o produto
-            TableRow row = new TableRow(this);
-
-            // Criar as células para cada coluna do produto
-            TextView nomeProduto = new TextView(this);
-            TextView precoUnidade = new TextView(this);
-
-            // Definir os valores das células com os dados do produto
-            nomeProduto.setText(produto.getNomeProduto());
-            precoUnidade.setText(String.valueOf(produto.getPreco()));
-
-            // Definir os atributos de layout para os TextViews
-            TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(
-                    TableRow.LayoutParams.MATCH_PARENT,
-                    TableRow.LayoutParams.WRAP_CONTENT
-            );
-            layoutParams.setMargins(0, dpToPx(3), 0, 0);
-            nomeProduto.setLayoutParams(layoutParams);
-            precoUnidade.setLayoutParams(layoutParams);
-
-            nomeProduto.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-            precoUnidade.setBackgroundColor(getResources().getColor(android.R.color.transparent, getTheme()));
-
-            nomeProduto.setGravity(Gravity.CENTER_HORIZONTAL);
-            precoUnidade.setGravity(Gravity.CENTER_HORIZONTAL);
-
-            nomeProduto.setTextAppearance(this, android.support.v7.appcompat.R.style.TextAppearance_AppCompat_Large);
-            precoUnidade.setTextAppearance(this, android.support.v7.appcompat.R.style.TextAppearance_AppCompat_Large);
-
-            // Adicionar as células à linha
-            row.addView(nomeProduto);
-            row.addView(precoUnidade);
-
-            // Adicionar a linha à tabela
-            tabelaProdutos.addView(row);
+            nomeProdutos.append(produto.getNomeProduto()).append("\n");
+            precoUnidades.append(produto.getPreco()).append("\n");
         }
-    }
-    public int dpToPx(int dp) {
-        float density = getResources().getDisplayMetrics().density;
-        return Math.round(dp * density);
+
+        txtNomeProduto.setText(nomeProdutos.toString());
+        txtPrecoUnidade.setText(precoUnidades.toString());
     }
 }

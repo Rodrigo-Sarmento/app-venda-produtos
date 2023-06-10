@@ -11,6 +11,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +21,17 @@ public class VendaActivity extends AppCompatActivity {
     private ImageView ivVoltarVenda;
     private Button btnAumentarQtd;
     private Button btnDiminuirQtd;
+    private Button btnZerarVenda;
     private EditText qtdProduto;
     private AutoCompleteTextView nomeProduto;
     private AutoCompleteTextView nomeCliente;
     private BancoDeDados db;
+    private ImageView btnAdicionar;
+    private TextView txtListaNome;
+    private  TextView txtListaQTD;
+    private TextView txtListaPrecoQTD;
+    private TextView txtTotalCompra;
+    double precoTotal = 0.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +45,13 @@ public class VendaActivity extends AppCompatActivity {
         qtdProduto = findViewById(R.id.entQtdProduto);
         nomeProduto = findViewById(R.id.entNomeProduto);
         nomeCliente = findViewById(R.id.txtNomeComprador);
+        btnAdicionar = findViewById(R.id.imageView3);
+        txtListaNome = findViewById(R.id.txtListaNome);
+        txtListaQTD = findViewById(R.id.txtListaQTD);
+        txtListaPrecoQTD = findViewById(R.id.txtListaPrecoQTD);
+        txtTotalCompra = findViewById(R.id.txtTotalCompra);
+        btnZerarVenda = findViewById(R.id.btnZerarVenda);
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, new ArrayList<>());
         nomeProduto.setAdapter(adapter);
@@ -140,6 +156,64 @@ public class VendaActivity extends AppCompatActivity {
                 qtdProduto.setText(String.valueOf(qtd));
             }
 
+        });
+
+        btnZerarVenda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), VendaActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+        btnAdicionar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nome = nomeProduto.getText().toString();
+
+                // Verifica se um nome de produto válido foi digitado
+                if (nome.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Digite um nome de produto válido",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Procura o produto no banco de dados pelo nome
+                Produto produto = db.getProdutoByNome(nome);
+
+                // Verifica se o produto foi encontrado
+                if (produto == null) {
+                    Toast.makeText(getApplicationContext(), "Produto não encontrado",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                String nomeProduto = produto.getNomeProduto();
+                double precoProduto = produto.getPreco();
+                double qtProdutos = Double.parseDouble(qtdProduto.getText().toString());
+                double precoxQtd = precoProduto * qtProdutos;
+                precoTotal += precoxQtd;
+
+                txtTotalCompra.setText("TOTAL: R$"+precoTotal);
+
+                String listPrecos = precoxQtd + "\n";
+                txtListaPrecoQTD.append(listPrecos);
+
+
+                String nomeProdutosAtuais = txtListaNome.getText().toString();
+                String novoNomeProdutos = nomeProdutosAtuais + "\n" + nomeProduto;
+                txtListaNome.setText(novoNomeProdutos);
+
+                String qtProduto = qtdProduto.getText().toString();
+                String novoQtProdutos = qtProduto + "\n";
+                txtListaQTD.append(novoQtProdutos);
+
+                // Use o nome e o preço do produto conforme necessário
+                // Exemplo: exiba-os em um Toast
+                Toast.makeText(getApplicationContext(), "Produto adicionado com sucesso! Nome: " + nomeProduto + ", Preço: " + precoProduto,
+                        Toast.LENGTH_LONG).show();
+            }
         });
     }
 }

@@ -138,6 +138,34 @@ public class BancoDeDados extends SQLiteOpenHelper {
         return clientes;
     }
 
+    public Produto getProdutoByNome(String nome) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Produto produto = new Produto();
+
+        // Query para selecionar o produto pelo nome
+        String selectQuery = "SELECT * FROM TbProduto WHERE nomeProduto = '" + nome + "'";
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // Verifica se um produto foi encontrado
+        if (cursor.moveToFirst()) {
+            // Preenche os dados do produto a partir do cursor
+            @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("_idProduto"));
+            @SuppressLint("Range") String nomeProduto = cursor.getString(cursor.getColumnIndex("nomeProduto"));
+            @SuppressLint("Range") double precoProduto = cursor.getDouble(cursor.getColumnIndex("preco"));
+
+            // Cria um objeto Produto com os dados obtidos
+            produto.set_idProduto(id);
+            produto.setNomeProduto(nomeProduto);
+            produto.setPreco(precoProduto);
+        }
+
+        cursor.close();
+        db.close();
+
+        return produto;
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
