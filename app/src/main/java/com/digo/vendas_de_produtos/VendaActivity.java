@@ -31,6 +31,9 @@ public class VendaActivity extends AppCompatActivity {
     private  TextView txtListaQTD;
     private TextView txtListaPrecoQTD;
     private TextView txtTotalCompra;
+    private TextView txtPrecoProduto;
+    private TextView txtSaldoCliente;
+    private ImageView ivFinalizarVenda;
     double precoTotal = 0.0;
 
     @Override
@@ -51,6 +54,9 @@ public class VendaActivity extends AppCompatActivity {
         txtListaPrecoQTD = findViewById(R.id.txtListaPrecoQTD);
         txtTotalCompra = findViewById(R.id.txtTotalCompra);
         btnZerarVenda = findViewById(R.id.btnZerarVenda);
+        txtPrecoProduto = findViewById(R.id.txtPrecoProduto);
+        txtSaldoCliente = findViewById(R.id.txtSaldoCliente);
+        ivFinalizarVenda = findViewById(R.id.imageView5);
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, new ArrayList<>());
@@ -73,6 +79,7 @@ public class VendaActivity extends AppCompatActivity {
                     List<String> nomesClientes = new ArrayList<>();
                     for (Cliente cliente : clientes) {
                         nomesClientes.add(cliente.getNomeCliente());
+                        txtSaldoCliente.setText("CLIENTE: R$"+cliente.getCredito());
                     }
 
                     // Limpe o adaptador antes de adicionar as novas sugestões
@@ -109,6 +116,7 @@ public class VendaActivity extends AppCompatActivity {
                     List<String> nomesProdutos = new ArrayList<>();
                     for (Produto produto : produtos) {
                         nomesProdutos.add(produto.getNomeProduto());
+                        txtPrecoProduto.setText("R$: "+produto.getPreco());
                     }
 
                     // Limpe o adaptador antes de adicionar as novas sugestões
@@ -133,6 +141,17 @@ public class VendaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+        ivFinalizarVenda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "VENDA REALIZADA COM SUCESSO!",
+                        Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), VendaActivity.class);
                 startActivity(intent);
             }
 

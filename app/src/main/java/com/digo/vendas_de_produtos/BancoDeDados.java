@@ -126,7 +126,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
                 Cliente cliente = new Cliente();
                 cliente.set_idCliente(cursor.getInt(cursor.getColumnIndex("_idCliente")));
                 cliente.setNomeCliente(cursor.getString(cursor.getColumnIndex("nomeCliente")));
-
+                cliente.setCredito(cursor.getDouble(cursor.getColumnIndex("credito")));
                 clientes.add(cliente);
             } while (cursor.moveToNext());
         }
